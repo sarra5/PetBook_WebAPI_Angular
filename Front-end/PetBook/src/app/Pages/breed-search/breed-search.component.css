@@ -1,0 +1,56 @@
+/* Global styles
+.all{
+  background-image: url('../../../assets/Images/PetInfoBG.png') !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.search-icon {
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+}
+
+input[type="text"] {
+  transition: width 0.4s ease-in-out;
+  width: 100%;
+  max-width: 400px;
+}
+
+@media (max-width: 640px) {
+  .search-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  input[type="text"] {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  input[type="text"] {
+    max-width: 300px;
+  }
+}
+@keyframes hoverUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.hover-card {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-card:hover {
+  animation: hoverUpDown 0.6s ease-in-out infinite;
+}
+.pet-photo {
+  width: 300px;
+  height: 250px;
+} */

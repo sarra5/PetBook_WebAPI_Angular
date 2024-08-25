@@ -1,0 +1,113 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "PetBookContext",
+   "ContextNamespace": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "PetBooK.DAL",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[Breed]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Client]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Clinic]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Clinic_Doctor]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Clinic_Location]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Clinic_Phone]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Doctor]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Pet]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Pet_Breed]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Request_For_Breed]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reservation]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reservation_For_Vaccine]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Role]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Secretary]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[User]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Vaccine]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Vaccine_Clinic]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Vaccine_Pet]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": null,
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

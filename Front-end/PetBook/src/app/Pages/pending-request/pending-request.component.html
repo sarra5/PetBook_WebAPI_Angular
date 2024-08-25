@@ -1,0 +1,38 @@
+<div class="bg-gray-100 ">
+  <div class="px-8 mt-8 table-container">
+    <ng-container *ngIf="request.length > 0; else noRequestMessage">
+      <table class="min-w-full divide-y divide-gray-200"> 
+        <thead>
+          <tr class="text-left text-2xl text-gray-800 tracking-wider">
+            <th scope="col" class="px-6 py-7 font-medium">My Pet</th>
+            <th scope="col" class="px-6 py-7 font-medium">Pair Pet</th>
+            <th scope="col" class="px-6 py-7 font-medium">Owned By</th>
+            <th scope="col" class="px-6 py-7 font-medium">Response</th>
+          </tr>
+        </thead>
+        <tbody class="bg-gray-100 text-lg">
+          <tr *ngFor="let item of request; let i = index">
+            <td class="px-6 py-4 whitespace-nowrap">{{ item.receiverPetName }}</td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <button class="border border-[#FE7A36] rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-[#fe7936b1] focus:outline-none focus:shadow-outline" (click)="ShowPetDetails(item.petIDSender)">{{ item.senderPetName }} </button>
+
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">{{ item.ownersenderName }}</td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <button class="border border-green-500 bg-green-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline" (click)="Confirm(item.petIDSender, item.petIDReceiver)">Confirm</button>
+              <button class="border border-gray-200 bg-gray-200 text-gray-700 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-300 focus:outline-none focus:shadow-outline" (click)="removeRequest(item.petIDSender, item.petIDReceiver)">Decline</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+
+    <ng-template #noRequestMessage>
+      <div class="flex justify-center items-center min-h-screen">
+        <div class="bg-white shadow-md rounded-lg p-6">
+          <p class="text-center font-aclonica text-2xl text-gray-800">There is no request</p>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

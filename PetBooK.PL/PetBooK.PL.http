@@ -1,0 +1,6 @@
+@PetBooK.PL_HostAddress = http://localhost:5226
+
+GET {{PetBooK.PL_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,76 @@
+<div class="bg-gray-100 p-8">
+  <div class="w-[70%] m-auto">
+
+    <section class="m-auto text-center pb-14 space-y-8">
+      <p class="font-Laila text-[#FE7A36] text-[15px] font-semibold">BEST PET CARE</p>
+      <p class="font-Laila font-semibold text-[50px] text-[#051829]">Book Your Appointment</p>
+    </section>
+
+    <section class="font-Laila2 bg-white p-5 shadow-xl">
+      <div class="clinic-card" *ngIf="clinicInfo">
+        <div class="flex justify-between text-gray-500">
+          <div class="mr-4 p-4 w-[50%]">
+            <p class="textBefore relative pl-5 text-2xl font-bold text-[#051829]">{{clinicInfo.name}}</p>
+
+            <div>
+              <span class="textBefore relative pl-5 text-2xl font-bold text-[#051829]">Rate: </span>
+              <ng-container *ngFor="let star of stars; let i = index">
+                <i class="fa text-[gold] mr-2 text-lg" [ngClass]="{'fa-star': i < clinicInfo.rate, 'fa-star-o': i >= clinicInfo.rate}"></i>
+              </ng-container>
+            </div>
+            
+            <div class="my-3">
+              <span class="textBefore relative pl-5 text-2xl font-bold text-[#051829]">Locations: </span>
+              <ul>
+                <li class="ml-10 text-base" *ngFor="let location of clinicInfo?.locations">{{location}}</li>
+              </ul>
+            </div>
+            
+            <div class="my-3">
+              <span class="textBefore relative pl-5 text-2xl font-bold text-[#051829]">Phones: </span>
+              <ul>
+                <li class="ml-10 text-base" *ngFor="let phone of clinicInfo?.phoneNumbers">{{phone}}</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="book-appointment text-center p-5 bg-[#fffaf0] w-[50%]">
+              <p class="text-xl font-bold mb-2 text-[#fe7936]">Book an Appointment</p>
+              <input type="text" placeholder="Your Name" class="border p-2 rounded mb-2 w-full focus:outline-[#fe7936]">
+              <input type="date"  [(ngModel)]="appointment.date" class="border p-2 rounded mb-2 w-full focus:outline-[#fe7936]">
+              <input type="text" placeholder="Your Phone"  class="border p-2 rounded mb-2 w-full focus:outline-[#fe7936]">
+              <textarea placeholder="Additional Information" class="border p-2 rounded mb-2 w-full focus:outline-[#fe7936]"></textarea>
+              <button (click)="choosePet()" class="bg-[#746f6c] hover:bg-[#746f6c86] text-white px-8 py-2 text-base mr-4" ><strong>Choose Pet</strong></button>
+              <button (click)="bookAppointment()" class="bg-[#fe7936] hover:bg-[#e66322] text-white px-8 py-2 text-base">Book</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="m-auto text-center py-14 space-y-8">
+      <p class="font-Laila text-[#FE7A36] text-[15px] font-semibold">BEST PET CARE</p>
+      <p class="font-Laila font-semibold text-[50px] text-[#051829]">Meet Our Doctors</p>
+      <div class="w-[610px] m-auto">
+          <p class="font-Laila2 text-[#696969] text-[19px]" >We understand the importance of proper care for pets. That's why we've created a place where you can find the best doctors.</p>
+      </div>
+    </section>
+
+    <section class="font-Laila2 flex flex-wrap justify-around">
+      <div class="bg-white w-[30%] h-[500px] p-5 shadow-xl mb-12" *ngFor="let doctor of ClinicDoctors; let i = index">
+        @if(doctor.photo !== null){
+          <img class="object-cover h-[75%] w-[100%]" [src]="doctor.photo">
+        }
+        @else {
+          <img class="object-cover h-[75%] w-[100%]" src="../../../assets/Images/null.jpg">
+        }
+        <div class="flex align-middle mt-5">
+          <span class="textBefore relative pl-5 text-2xl font-bold">Dr. {{doctor.doctorName}}</span>
+        </div>
+        <div class="text-gray-400 flex flex-col text-base items-center">
+          <span class="p-0 m-0">{{doctor.degree}}</span>
+          <span class="p-0 m-0">{{doctor.phone}}</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

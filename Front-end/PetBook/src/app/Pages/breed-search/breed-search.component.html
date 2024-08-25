@@ -1,0 +1,65 @@
+<div class="min-h-screen bg-[#f7f7f7] p-8" (click)="hideSuggestions()">
+    <div class="flex w-[50%] m-auto " (click)="$event.stopPropagation()">
+        @if (FlagToBack==true) {
+            <button class="bg-[#454757] rounded-full p-3 mx-6" (click)="BackToPets()">
+                <svg class="h-8 w-8 text-white"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M9 11l-4 4l4 4m-4 -4h11a4 4 0 0 0 0 -8h-1" /></svg>
+            </button>
+        }
+        <div class="relative m-auto w-[500px] ">
+            <input type="text" placeholder="Search for Breed" class="w-full text-lg pl-4 pr-10 py-3 border rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#FE7A36]" [(ngModel)]="search" (ngModelChange)="onInputChange()" />
+            <button class="absolute  right-4 top-3 text-[#4b3930]" (click)="CallToFetch()">
+            <svg
+                class="w-8 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l5-5m0 0l-5-5m5 5H4"></path>
+            </svg>
+            </button>
+            <ul class="absolute z-10 top-full left-0 right-0 bg-white border border-gray-300 rounded-b-md shadow-md" *ngIf="breedSuggestions.length > 0" >
+              <li *ngFor="let suggestion of breedSuggestions" class="py-2 px-4 cursor-pointer hover:bg-gray-100" (click)="FunctionTakesSuggAndBindIt(suggestion)" >
+                {{ suggestion }}
+              </li>
+            </ul>
+        </div>
+        <select class="ml-4 py-2 px-4 border rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500" [(ngModel)]="type"  (ngModelChange)="CallToFetch()">
+          <option value="">All Types</option>
+          <option value="Dog">Dog</option>
+          <option value="Cat">Cat</option>
+        </select>
+        <select class="ml-4 py-2 px-4 border rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500" [(ngModel)]="sex" (ngModelChange)="CallToFetch()" >
+          <option value="">All Sexes</option>
+          <option value="F">Female</option>
+          <option value="M">Male</option>
+        </select>
+    </div>
+  <div >
+    <div class="flex justify-center items-center min-h-screen" *ngIf="CountIsZero">
+        <div class="bg-white shadow-md rounded-lg p-6">
+          <p class="text-center font-aclonica text-2xl text-gray-800">There is no Pets With this Breed Now</p>
+        </div>
+    </div>    
+    <div *ngIf="!CountIsZero" class="flex flex-wrap justify-around py-10 m-auto w-[80%] ">
+      @for(pet of pets; track $index){
+        <div class="w-[31%] bg-white my-5 shadow-xl rounded-lg relative">
+          <div class="w-full h-[340px]">
+            <img [src]="pet.photo" [alt]="pet.name" class="h-full w-full rounded-t-lg object-cover	">
+            <p class="absolute font-Laila font-light text-3xl top-6 px-5 py-1 bg-[#dcded9] text-stone-600">{{pet.name}}</p>
+          </div>
+          <div class="py-5 px-5 relative">
+            <p class="font-Laila2 text-xl">Sex: {{pet.sex  === 'F' ? 'Female' : 'Male'}}</p>
+            <p class="font-Laila2 text-xl">Age: {{pet.ageInMonth}}</p>
+            <p class="font-Laila2 text-xl">Breed: {{pet.breedName}}</p>
+            <br>
+            <br>
+            <button class=" absolute text-white py-2 px-4 shadow-md bg-[#FE7A36] hover:bg-[#f0773b] bottom-8 right-5 " (click)="chooseme(pet.petID)" >
+              Choose Me
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+  <div class="text-slate-600 flex justify-center">
+    <button class="bg-[#FE7A36] text-white w-20 rounded-xl" (click)="prevPage()" > Previous</button>
+    <span class="p-2 m-2"> Page {{pageNumber}} of {{totalitems}}  </span>
+    <button class="bg-[#FE7A36] text-white w-20 rounded-xl" (click)="nextPage()" >Next</button>
+</div>
+</div>

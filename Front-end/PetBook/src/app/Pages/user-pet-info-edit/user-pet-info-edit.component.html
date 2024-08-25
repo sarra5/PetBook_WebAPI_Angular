@@ -1,0 +1,145 @@
+<div class="py-5">
+    <div class="flex w-[1100px] m-auto shadow-2xl min-h-screen">
+        <section class="w-1/2">
+            <div class="m-auto w-[70%] my-5">
+                <div class="highlight-container2">
+                    <p class="highlighted-text2 text-2xl">Edit Your <span class=" text-[#FE7A36]">Pet</span></p>
+                </div>
+
+                <div class="my-10 flex flex-wrap justify-between">
+                    <div class="mb-5 relative">
+                        <div class="flex flex-col">
+                          <label class="text-slate-800 text-lg">Name</label>
+                          <input class="p-2 border-2 focus:outline-none focus:border-[#FE7A36] rounded-md" type="text"
+                                 [(ngModel)]="editedUserPetInfo.name"
+                                 (ngModelChange)="onInputValueChangeForPet({ field: 'name', value: $event })"
+                                 placeholder="KoKy">
+                        </div>
+                        <div *ngIf="validationErrorsForPet['name']" class="text-red-500 absolute">*Name is required.</div>
+                    </div>
+                
+                    <div class="mb-5 relative">
+                        <div class="flex flex-col">
+                          <label class="text-slate-800 text-lg">Age In Month</label>
+                          <input class="p-2 border-2 focus:outline-none focus:border-[#FE7A36] rounded-md" type="number"
+                                 [(ngModel)]="editedUserPetInfo.ageInMonth"
+                                 (ngModelChange)="onInputValueChangeForPet({ field: 'ageInMonth', value: $event })">
+                        </div>
+                        <div *ngIf="validationErrorsForPet['ageInMonth']" class="text-red-500 absolute">*Age in month is required.</div>
+                    </div>
+                
+                    <div class="w-[100%] my-5 relative">
+                        <div class="flex justify-between items-center">
+                          <label class="text-slate-800 text-lg w-[30%]">Gender</label>
+                          <div class="flex items-center p-2 border-2 hover:border-[#FE7A36] rounded-md w-[40%]">
+                            <input type="radio" id="female" name="gender" value="F" [(ngModel)]="editedUserPetInfo.sex" (change)="onSexChange($event)" class="mr-2">
+                            <label for="female" class="text-slate-800 text-base">Female</label>
+                          </div>
+                          <div class="flex items-center ml-7 p-2 border-2 hover:border-[#FE7A36] rounded-md w-[40%]">
+                            <input type="radio" id="male" name="gender" value="M" [(ngModel)]="editedUserPetInfo.sex" (change)="onSexChange($event)" class="mr-2">
+                            <label for="male" class="text-slate-800 text-base">Male</label>
+                          </div>
+                        </div>
+                        <div *ngIf="validationErrorsForPet['sex']" class="text-red-500 absolute">*Gender is required.</div>
+                    </div>
+                
+                    <div class="relative mb-5 w-[45%]">
+                        <div class="flex flex-col">
+                            <label class="text-slate-800 text-lg">Type</label>
+                            <select class="p-2 border-2 focus:outline-none focus:border-[#FE7A36] rounded-md"
+                                    required
+                                    [(ngModel)]="editedUserPetInfo.type"
+                                    (change)="onTypeChange($event)">
+                                <option value="" disabled selected hidden></option>
+                                <option value="Cat">Cat</option>
+                                <option value="Dog">Dog</option>
+                            </select>
+                        </div>
+                        <div *ngIf="validationErrorsForPet['type']" class="text-red-500 absolute">*Type is required.</div>
+                    </div>
+                
+                    <div class="relative mb-5 w-[45%]">
+                        <div class="flex flex-col">
+                            <label class="text-slate-800 text-lg">Breed</label>
+                            <select class="p-2 border-2 focus:outline-none focus:border-[#FE7A36] rounded-md"
+                                    required
+                                    [(ngModel)]="petBreedID.breedID"
+                                    (change)="onTBreedChange($event)">
+                                <option value="" disabled selected hidden></option>
+                                <option *ngFor="let breed of breedList" [value]="breed.breedID">{{ breed.breed1 }}</option>
+                            </select>
+                        </div>
+                        <div *ngIf="validationErrorsForBreedPet['breedID']" class="text-red-500 absolute">*Breed is required.</div>
+                    </div>
+                
+                    <div class="w-[100%] my-5 relative">
+                        <div class="flex justify-between items-center">
+                          <label class="text-slate-800 text-lg w-[30%]">Ready For Breeding?</label>
+                          <div class="flex items-center p-2 border-2 hover:border-[#FE7A36] rounded-md w-[40%]">
+                            <input type="radio" id="false" name="ready" [value]="false" [(ngModel)]="editedUserPetInfo.readyForBreeding" (change)="onReadyForBreedChange($event)" class="mr-2">
+                            <label for="false" class="text-slate-800 text-base">False</label>
+                          </div>
+                          <div class="flex items-center ml-7 p-2 border-2 hover:border-[#FE7A36] rounded-md w-[40%]">
+                            <input type="radio" id="true" name="ready" [value]="true" [(ngModel)]="editedUserPetInfo.readyForBreeding" (change)="onReadyForBreedChange($event)" class="mr-2">
+                            <label for="true" class="text-slate-800 text-base">True</label>
+                          </div>
+                        </div>
+                        <div *ngIf="validationErrorsForPet['readyForBreeding']" class="text-red-500 absolute">*Is Ready for breeding is required.</div>
+                    </div> 
+                    
+                
+                    <div class="my-5 relative w-[100%]">
+                        <div class="flex flex-col">
+                          <label class="text-slate-800 text-lg">Other Information</label>
+                          <input class="p-2 border-2 focus:outline-none focus:border-[#FE7A36] rounded-md" type="text"
+                                 [(ngModel)]="editedUserPetInfo.other"
+                                 (ngModelChange)="onInputValueChangeForPet({ field: 'other', value: $event })"
+                                 placeholder="Any other information about the pet">
+                        </div>
+                        <div *ngIf="validationErrorsForPet['other']" class="text-red-500 absolute">*Others is required.</div>
+                    </div>
+
+                    <div class="flex mt-5">
+                        <label class="text-slate-800 text-lg">Enter your pet's Book ID</label>
+                        <div class="relative">
+                            <input type="file" class="border-2 focus:outline-none focus:border-[#FE7A36] block w-full px-4 py-2 rounded-md" (change)="onFileSelectedBookImage($event)">
+                            <div *ngIf="validationErrorsForPet['idNoteBookImage']" class="text-red-500 absolute">*Pet Book Id is required.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="flex justify-between">
+                    <button class="text-white bg-[#FE7A36] w-[40%] p-3 rounded-full hover:bg-[#e05e1d] transition duration-200 ease-in hover:-translate-x-1 hover:scale-105" (click)="SaveEdit()">Update Pet</button>
+                    <button class="text-white bg-[#979592] w-[40%] p-3 rounded-full hover:bg-[#605c5a] transition duration-200 ease-in hover:-translate-x-1 hover:scale-105" (click)="Cancel()">Cancel</button>
+                </section>
+            </div>
+        </section>
+
+        <section class="w-1/2 border-r-2 border-[#ccccccd6] FirstSection">
+            <div class="m-auto w-[70%] my-5">
+              <div class="highlight-container">
+                <p class="highlighted-text">ENJOY WITH PET</p>
+              </div>
+      
+              <div>
+                <div class="my-5 mt-16 image-container relative">
+                    <img src="" id="photoPreview" class="cursor-pointer w-[70%] h-[270px] rounded-full m-auto object-cover" (click)="triggerFileInput()">
+                    <div class="overlay" (click)="triggerFileInput()">
+                      <p class="text-white text-center">Upload pet image</p>
+                    </div>
+                </div>
+                <input type="file" id="fileInput" class="hidden" (change)="onFileSelected($event)">
+                <div *ngIf="validationErrorsForPet['photo']" class="bg-[#FE7A36] text-white text-center rounded-md py-2">*Pet Photo is required.</div>
+              </div>
+               
+              <div>
+                <p class="text-white text-center">Welcome to our website where you can find rare breeds and will be easy for you to find clinics.</p>
+              </div>
+      
+              <div class="flex justify-center mt-10">
+                <img src="../../../assets/Images/headerLogo.png" class="w-[40%] rounded-full object-cover">
+              </div>
+            </div>
+        </section>
+    </div>
+</div>

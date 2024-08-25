@@ -1,0 +1,15 @@
+.textBefore::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #fe7936;
+}
+
+.clinic-card {
+  background-image: url('/assets/Images/Background.png');
+  background-size: cover;
+  background-position: bottom;
+}

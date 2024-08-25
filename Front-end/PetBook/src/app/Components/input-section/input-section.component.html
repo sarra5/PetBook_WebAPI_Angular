@@ -1,0 +1,15 @@
+<input class="p-2 w-[100%] border-b-2 border-gray-800 focus:outline-none transition duration-200 ease-in" type={{typeOfInput}}
+                    onfocus="this.nextElementSibling.style.transform = 'translateY(-35px)'; 
+                    this.nextElementSibling.style.fontSize = '20px'; 
+                    this.nextElementSibling.style.color = '#FE7A36';
+                    this.style.borderColor = '#FE7A36';"  
+                    onblur="if(this.value==='') 
+                    { 
+                        this.nextElementSibling.style.transform = ''; 
+                        this.nextElementSibling.style.fontSize = ''; 
+                        this.nextElementSibling.style.color = ''; 
+                        this.style.borderColor = ''
+                    }"
+                    [(ngModel)]="inputValue"
+                    (ngModelChange)="onInputValueChange($event)">
+<label class="absolute left-2 bottom-2 text-slate-400 transition duration-200 ease-in capitalize">{{LabelType}}</label>

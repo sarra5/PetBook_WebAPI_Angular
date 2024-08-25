@@ -1,0 +1,10 @@
+.active-tab {
+    color: blue;
+  }
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+  }
+  

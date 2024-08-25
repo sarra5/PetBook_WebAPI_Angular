@@ -1,0 +1,38 @@
+<div class="pt-5">
+    <div class="flex w-[1100px] h-[95vh] m-auto shadow-2xl">
+        <div class="w-1/2 flex flex-col items-center justify-center">
+            <div class="m-24 text-center">
+                <!-- <p class="tracking-wider font-medium text-3xl text-slate-600 text-center">Login To PetBook</p> -->
+                <div class="highlight-container2 pb-7">
+                    <p class="highlighted-text2 text-2xl">Login To <span class=" text-[#FE7A36]">PetBook</span></p>
+                  </div>
+                <p class="text-slate-400">Welcome to our website where you can find rare breeds and will be easy for you to find clinics.</p>
+               
+                <section class="my-10">
+                    <div class="relative">
+                        <app-input-section typeOfInput="email" LabelType="email" (inputValueChange)="email=$event" [defaultValue]="email"></app-input-section>
+                    </div>
+    
+                    <div class="relative mt-10">
+                        <app-input-section typeOfInput="password" LabelType="password" (inputValueChange)="password=$event" [defaultValue]="password"></app-input-section>
+                    </div>
+                </section>
+    
+                <section class="flex justify-around mb-5">
+                    <p class="text-slate-400">Don't have an account?</p>
+                    <a routerLink="/UserSignUp" class="border-b-2 border-transparent text-[#FE7A36] hover:border-[#FE7A36] hover:cursor-pointer transition duration-200 hover:scale-105">Sign-Up</a>            
+                </section>
+    
+                <section class="flex justify-between pt-3">
+                    <button class="text-white bg-[#FE7A36] w-[40%] py-3 rounded-full hover:bg-[#e05e1d] transition duration-200 ease-in hover:-translate-x-1 hover:scale-105" (click)="Login()">Log in</button>
+                    <button class="text-white bg-[#979592] w-[40%] py-3 rounded-full hover:bg-[#605c5a] transition duration-200 ease-in hover:-translate-x-1 hover:scale-105" (click)="Cancel()">Cancel</button>
+                </section>
+    
+            </div>
+        </div>
+    
+        <div class="w-1/2">
+            <img class="h-[100%] w-[100%]" src="../../../assets/Images/PetLogin (2).jpg">
+        </div>
+    </div>
+</div>

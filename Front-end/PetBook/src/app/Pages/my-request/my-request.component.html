@@ -1,0 +1,37 @@
+<div class="bg-gray-100 ">
+  <div class="px-8 table-container">
+    <ng-container *ngIf="request.length > 0; else noRequestMessage">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead>
+          <tr class="text-left text-2xl text-gray-800 tracking-wider">
+            <th scope="col" class="px-6 py-7 font-medium">My Pet</th>
+            <th scope="col" class="px-6 py-7 font-medium">Pair Pet</th>
+            <th scope="col" class="px-6 py-7 font-medium">Owned By</th>
+            <th scope="col" class="px-6 py-7 font-medium">Remove</th>
+          </tr>
+        </thead>
+        <tbody class="bg-gray-100 text-lg">
+          <tr *ngFor="let item of request; let i = index">
+            <td class="px-6 py-4 whitespace-nowrap text-gray-800">{{ item.senderPetName }}</td>
+            <td class="px-6 py-4 text-orange-500">{{ item.receiverPetName }}</td>
+            <td class="px-6 py-4 text-gray-800">{{ item.ownerreceiverName }}</td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <button class="text-red-600 hover:text-red-900 font-bold" (click)="removeRequest(item.petIDSender,item.petIDReceiver)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+
+    <ng-template #noRequestMessage>
+      <div class="flex justify-center items-center min-h-screen">
+        <div class="bg-white shadow-md rounded-lg p-6">
+          <p class="text-center font-aclonica text-2xl text-gray-800">You did not send a request to any pet</p>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
+

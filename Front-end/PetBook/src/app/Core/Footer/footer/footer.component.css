@@ -1,0 +1,74 @@
+@media screen  and (max-width:1024px) and (min-width:900px)
+ {
+    .first{
+        margin-left: -60px;;
+    }
+    .second{
+        padding-bottom: 20px;
+        padding-right:115px ;
+        padding-left:115px ;
+        margin-left: -20px;;
+
+    }
+    .legal{
+        margin-left: -50px;
+    }
+    .second .item + .item{
+        margin-left: 75px;
+    }
+}
+
+@media screen  and (max-width:900px) and (min-width:800px)
+ {
+    .first{
+        margin-left: -60px;;
+    }
+    .second{
+        padding-bottom: 20px;
+        padding-right:115px ;
+        padding-left:115px ;
+        margin-left: -50px;;
+
+    }
+    .legal{
+        margin-left: -50px;
+    }
+    .second .item + .item{
+        margin-left: 55px;
+    }
+    .pd{
+        font-size: 18px;
+    }
+}
+@media screen  and (max-width:800px) and (min-width:650px)
+ {
+    
+     .larger{
+        display: block;
+     }
+     .second{
+        margin-left: -50px;
+     }
+     .pd{
+        font-size: 17px;
+    } 
+}
+@media screen  and (max-width:650px) 
+ {
+    
+     .larger{
+        display: block;
+     }
+     .first{
+        margin-left: -55px;
+     }
+     .second{
+        margin-left: -80px;
+     }
+     .pd{
+        font-size: 17px;
+    } 
+    .second .item + .item{
+        margin-left: 60px;
+    }
+}

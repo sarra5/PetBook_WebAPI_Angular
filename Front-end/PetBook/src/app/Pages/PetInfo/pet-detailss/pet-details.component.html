@@ -1,0 +1,61 @@
+<div class="bg-gray-100 p-8">
+    <div class="w-[70%] m-auto">
+        <section class="text-center py-5">
+            <p class="font-Laila font-semibold text-4xl text-[#051829]">Meet Me</p>
+        </section>
+        
+        <div class="flex justify-between items-center">
+            <section class="font-Laila2 flex flex-wrap justify-around w-[30%]">
+                <div class="bg-white h-[400px] p-5 shadow-xl">
+                    <img [src]="pet?.photo" alt="Pet" class="object-cover h-[80%] w-[100%]">
+                    @if(this.IsButtonShown == true){
+                        <div class="flex justify-center mt-4">
+                            <button (click)="openPairPopup()" class="bg-[#fe7936] hover:bg-[#e66322] text-white px-8 py-2 text-base">Pair</button>    
+                        </div>
+                    }
+                </div>
+            </section>
+            
+            <section class="font-Laila2 bg-white p-5 shadow-xl w-[65%] h-[400px]">
+                <div class="h-[100%] flex items-center">
+                    <div class="flex justify-between w-[100%] h-[100%]">
+                        <div class="mr-4 p-4 w-[50%]">
+                            <p class="textBefore relative pl-5 text-xl font-bold text-[#051829]">{{pet?.name}}</p>
+                            <p class="textBefore relative pl-5 text-xl font-bold text-[#051829]">Age: <span class="ml-2 text-base text-gray-500">{{pet?.ageInMonth}}</span></p> 
+                            <p class="textBefore relative pl-5 text-xl font-bold text-[#051829]">Gender: <span class="ml-2 text-base text-gray-500">{{ pet?.sex === 'F' ? 'Female' : 'Male' }}</span></p> 
+                            <p class="textBefore relative pl-5 text-xl font-bold text-[#051829]">Type: <span class="ml-2 text-base text-gray-500">{{pet?.type}}</span></p> 
+                            <p class="textBefore relative pl-5 text-xl font-bold text-[#051829]">Breed: <span class="ml-2 text-base text-gray-500">{{pet?.breedName}} </span></p> 
+                            <p class="textBefore relative pl-5 text-xl font-bold text-[#051829]">Other Information: </p> <span class="ml-10 text-base text-gray-500">{{pet?.other}}</span>
+                        </div>
+                        <div class="book-appointment flex justify-end w-[50%]">
+                            <img [src]="pet?.idNoteBookImage" alt="Notebook Image" class="notebook-image object-cover h-[100%]">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="text-center py-5 mt-10">
+            <p class="font-Laila font-semibold text-4xl text-[#051829]">Meet My Owner</p>
+        </section>
+        
+        <section class="font-Laila2 flex flex-wrap justify-around">
+            <div class="bg-white w-[30%] h-[500px] p-5 shadow-xl mb-12">
+              @if(owner?.photo !== null){
+                <img class="object-cover h-[75%] w-[100%]" [src]="owner?.photo">
+              }
+              @else {
+                <img class="object-cover h-[75%] w-[100%]" src="../../../assets/Images/null.jpg">
+              }
+              <div class="flex align-middle mt-5">
+                <span class="textBefore relative pl-5 text-2xl font-bold">{{owner?.name}}</span>
+              </div>
+              <div class="text-gray-400 flex flex-col text-base items-center">
+                <span class="p-0 m-0">{{owner?.email}}</span>
+                <span class="p-0 m-0">{{owner?.phone}}</span>
+                <span class="p-0 m-0">{{owner?.location}}</span>
+              </div>
+            </div>
+        </section>
+    </div>
+</div>

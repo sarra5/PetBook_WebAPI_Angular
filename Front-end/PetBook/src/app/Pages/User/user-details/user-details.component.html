@@ -1,0 +1,31 @@
+<div class="py-5">
+  <div class="w-[1000px] h-[95vh] m-auto relative">
+    <section class="data w-[97%] h-[95%] bg-[#dcded9] absolute top-0 left-0">
+
+    </section>
+
+    <section class="w-[97%] h-[95%] shadow-2xl bg-white absolute bottom-0 right-0 flex">
+      <div class="w-[70%] h-fit m-auto relative">
+        <div class="font-Laila text-gray-700 relative z-10">
+          <div class="mb-14">
+            <p class="text-6xl bg-[#dcded9] w-fit">{{User.name}}</p>
+            <p>UserName: {{User.userName}}</p>
+            <p>Email: {{User.email}}</p>
+            <p>Phone: {{User.phone}}</p>
+            <p>location: {{User.location}}</p>
+            <p>Age: {{User.age}}</p>
+            <p>Gender: {{ User.sex.toLowerCase() === 'f' ? 'Female' : 'Male' }}</p>
+          </div>
+          <a routerLink="/UpdateUser" class="p-2 ml-10 shadow-xl text-white text-center cursor-pointer tracking-wider bg-[#FE7A36] hover:bg-[#e66322]">Update Profile</a>
+        </div>
+        @if(nameOfImage == null){
+          <img class="w-[400px] h-[400px] absolute top-[calc((100%-400px)/2)] right-0 object-cover" src="../../../../assets/Images/null.jpg" alt="{{ User.name }}">
+        }
+        @else {
+          <img class="w-[350px] h-[350px] absolute top-[calc((100%-350px)/2)] right-0 rounded-full object-cover" [src]="User.photo" alt="{{ User.name }}">
+        }
+      </div>
+    </section>  
+      
+  </div>
+</div>

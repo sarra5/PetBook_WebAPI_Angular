@@ -1,0 +1,48 @@
+<div class=" bg-[#f7f7f7] p-8 min-h-screen" (click)="hideSuggestions()">
+  <div >
+    <div class="flex w-[50%] m-auto " (click)="$event.stopPropagation()" >
+                  @if (Flag==true) {
+                      <button class="bg-[#454757] rounded-full p-3" (click)="BackToVaccines()">
+                          <svg class="h-8 w-8 text-white"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M9 11l-4 4l4 4m-4 -4h11a4 4 0 0 0 0 -8h-1" /></svg>
+                      </button>
+                  }
+                  <div class="relative m-auto w-[500px]">
+                      <input type="text"  placeholder="Search for Vaccine" class="w-full text-lg pl-4 pr-10 py-3 border rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#FE7A36]"  [(ngModel)]="searchQuery" (ngModelChange)="onInputChange()"/>
+                      <button class="absolute right-4 top-3 text-[#FE7A36]" (click)="searchBar()">
+                        <svg
+                            class="w-8 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l5-5m0 0l-5-5m5 5H4"></path>
+                        </svg>
+                      </button>
+                      <ul class="absolute  z-10 top-full left-0 right-0 bg-white border border-gray-300 rounded-b-md shadow-md" *ngIf="VaccineSuggestions.length > 0">
+                        <li *ngFor="let suggestion of VaccineSuggestions" class="py-2 px-4 cursor-pointer hover:bg-gray-100" (click)="selectBreed(suggestion)">
+                          {{ suggestion }}
+                        </li>
+                      </ul>
+                  </div>
+              </div>
+      </div>
+      <section class="Section mt-14">
+              <p id="HiddenParag" class="hidden text-center w-full p-10 mt-10 rounded-full shadow-lg bg-[#FFEFD8] text-slate-600 font-semibold text-3xl">No Clinics Found With this Name</p>
+              <div class="flex flex-wrap m-auto justify-center w-[80%]">
+              @for(Vaccine of vaccine ; track $index){ 
+                  <div class="cards h-[300px] bg-white border-2 w-[31%]   text-center shadow-lg rounded-lg mx-3 my-9 flex flex-col content-center justify-center p-5" >
+                          <div class="space-y-6">
+                              <p class="font-Laila font-semibold tracking-wider leading-7 text-[20px]">{{Vaccine.name}}</p>
+                              <p class=" font-extralight text-gray-500 text-[17px]">{{Vaccine.description}}</p>
+                          </div>
+                          <div class="">
+                              <button class=" rounded-md text-[17px] mt-5 p-4 bg-[#FE7A36] hover:bg-[#f0773b] text-white font-Laila2" (click)="GoToClinic(Vaccine.vaccineID)">
+                                  Choose Clinic
+                              </button>
+                          </div>
+                  </div>
+              }
+          </div>
+      </section>
+      <div class="text-slate-600 flex justify-center">
+        <button class="bg-[#FE7A36] text-white w-20 rounded-xl" (click)="prevPage()" > Previous</button>
+        <span class="p-2 m-2"> Page {{pageNumber}} of {{totalitems}}  </span>
+        <button class="bg-[#FE7A36] text-white w-20 rounded-xl" (click)="nextPage()" >Next</button>
+    </div>
+  </div> 

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+:host {
+             display: block;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+          color:rgb(163, 8, 8); 
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.invalid-feedback {
+  color: #EF4444; /* Red color for error messages */
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.button-container button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.button-container button:hover {
+  opacity: 0.9;
+}
+</style>
+</head>
+
+<h1 mat-dialog-title class="text-black">Add Vaccine</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="addVaccineForm" (ngSubmit)="onSaveClick()" class="space-y-4">
+    <div class="form-group">
+      <label class="text-black">Name</label>
+      <input matInput formControlName="name" placeholder="Name" class="form-control">
+      <div *ngIf="addVaccineForm.get('name')?.invalid && addVaccineForm.get('name')?.touched" class="invalid-feedback text-red-500">
+        Name is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="text-black">Description</label>
+      <textarea matInput formControlName="description" placeholder="Description" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label class="text-black">Price</label>
+      <input matInput formControlName="price" type="number" placeholder="Price" class="form-control">
+      <div *ngIf="addVaccineForm.get('price')?.invalid && addVaccineForm.get('price')?.touched" class="invalid-feedback text-red-500">
+        Price is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="text-black">Quantity</label>
+      <input matInput formControlName="quantity" type="number" placeholder="Quantity" class="form-control">
+      <div *ngIf="addVaccineForm.get('quantity')?.invalid && addVaccineForm.get('quantity')?.touched" class="invalid-feedback text-red-500">
+        Quantity is required
+      </div>
+    </div>
+
+    <div mat-dialog-actions class="flex justify-end space-x-4 mt-4">
+      <button mat-button type="button" (click)="onNoClick()" class="px-4 py-2 bg-gray-500 text-white rounded-md">
+        Cancel
+      </button>
+      <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md" [disabled]="addVaccineForm.invalid"
+              >
+        Save
+      </button>
+    </div>
+  </form>
+</div>
+

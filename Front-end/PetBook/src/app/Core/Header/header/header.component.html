@@ -1,0 +1,69 @@
+<nav class=" bg-white">
+    <div class="flex justify-between items-center px-4 md:px-6 lg:px-8">
+        <div class="flex items-center">
+            <img class="w-28 my-1" src="../../../../assets/Images/LogoHeader.png" alt="">
+            <p class="font-Laila text-3xl font-light">PetBook</p>
+        </div>
+        <div class="flex md:hidden">
+            <button id="mobile-menu-toggle" class="mobile-menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="hidden md:flex items-center space-x-4">
+            <ul class="flex justify-between space-x-4 text-xl font-light">
+                @if(role!="3"&& user)
+                {
+                    <ng-container>
+                        <li><a class="hover:font-normal" routerLink="">Home</a></li>
+                        <li><a class="hover:font-normal" routerLink="/Profile/Account">Account</a></li>
+                        <li><a class="hover:font-normal" routerLink="/BreedSearch">Breed</a></li>
+                        <li><a class="hover:font-normal" routerLink="/clinics">Clinic</a></li>
+                        <li><a class="hover:font-normal" routerLink="/Vaccine">Vaccine</a></li>
+                        <li><a class="bg-[#FE7A36] p-2 px-4 rounded-xl text-lg w-[150px] hover:bg-[#e66322] text-white" (click)="Logout()" routerLink="">Logout</a></li>
+                    </ng-container>
+                }
+                @if(!user){
+                    <ng-container>
+                        <li><a class="hover:font-normal" routerLink="">Home</a></li>
+                        <li><a class="hover:font-normal" routerLink="/BreedSearch">Breed</a></li>
+                        <li><a class="hover:font-normal" routerLink="/clinics">Clinic</a></li>
+                        <li><a class="hover:font-normal" routerLink="/Vaccine">Vaccine</a></li>
+                        <li><a class="ml-14 hover:font-normal" routerLink="/UserSignUp">Sign-Up</a></li>
+                        <li><a class="bg-[#FE7A36] p-2 px-4 rounded-xl text-lg w-[150px] text-white hover:bg-[#e66322]" routerLink="/Login">Login</a></li>
+                    </ng-container>
+                }
+                @if(role=="3" && user){
+                    <ng-container >
+                        <li><p class="hover:font-normal font-Laila">{{Name}}</p></li>
+                        <li><a class="bg-[#FE7A36] p-2 px-4 rounded-xl text-lg w-[150px] text-white hover:bg-[#e66322]" (click)="Logout()" routerLink="">Logout</a></li>
+                    </ng-container>
+                }
+            </ul>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden">
+        <ul class="flex flex-col space-y-4 text-xl">
+            <li><a class="block py-2 ml-2 hover:bg-slate-200" routerLink="">Home</a></li>
+            <ng-container *ngIf="user">
+                <li><a class="block py-2 ml-2  hover:bg-slate-200" routerLink="/Account">Account</a></li>
+                <li><a class="block py-2 ml-2  hover:bg-slate-200" routerLink="/BreedSearch">Breed</a></li>
+                <li><a class="block py-2 ml-2  hover:bg-slate-200" routerLink="/clinics">Clinic</a></li>
+                <li><a class="block py-2 ml-2  hover:bg-slate-200" routerLink="/Vaccine">Vaccine</a></li>
+                <li><a class="block py-2 m-5 rounded-lg text-center cursor-pointer tracking-wider bg-[#FE7A36] hover:bg-[#e66322]" (click)="Logout()">Logout</a></li>
+            </ng-container>
+            <ng-container *ngIf="!user">
+                <li><a class="block py-2 ml-2 hover:bg-slate-200" routerLink="/BreedSearch">Breed</a></li>
+                <li><a class="block py-2 ml-2 hover:bg-slate-200" routerLink="/clinics">Clinic</a></li>
+                <li><a class="block py-2 ml-2 hover:bg-slate-200" routerLink="/Vaccine">Vaccine</a></li>
+                <li><a class="block py-2 ml-2 hover:bg-slate-200" routerLink="/UserSignUp">Register</a></li>
+                <li><a class="block py-2 m-5 rounded-lg text-center cursor-pointer tracking-wider bg-[#FE7A36] hover:bg-[#e66322]" routerLink="/Login">Login</a></li>
+            </ng-container>
+        </ul>
+    </div>
+</nav>
+
+
+
+

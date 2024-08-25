@@ -1,0 +1,94 @@
+.highlight-container, .highlight-container2 {
+    position: relative;
+    display: inline-block;
+}
+
+.highlighted-text {
+    letter-spacing: 4px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(to right, #FE7A36 10%, #ecb294 100%, transparent 50%);
+    padding: 5px 10px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.highlighted-text::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -220px; 
+    width: 200px; 
+    border-top: 1px solid #ccc;
+    transform: translateY(-50%);
+}
+
+.highlighted-text2 {
+    letter-spacing: 3px;
+    color: rgb(88, 88, 88);
+    padding: 5px 10px;
+    position: relative;
+}
+
+.highlighted-text2::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    width: 100px; 
+    border-top: 3px solid #ccc;
+    border-radius: 15px;
+    transform: translateY(-50%);
+}
+
+.FirstSection {
+    position: relative;
+    overflow: hidden; /* Ensure the pseudo-element doesn't overflow the parent */
+}
+  
+.FirstSection:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../../../assets/Images/PetEdit (2).jpg");
+    background-size: cover;
+    filter: blur(3px);
+    z-index: -1;
+}
+
+.FirstSection * {
+    position: relative;
+    z-index: 1; 
+}
+
+.overlay {
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.overlay::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    width: 70%;
+    height: 270px; 
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+.overlay p {
+    position: absolute;
+    top: -135px;
+    left: 120px;
+    font-size: 1.2rem;
+    z-index: 10;
+}
+
+.image-container:hover .overlay {
+    opacity: 1;
+}

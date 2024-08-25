@@ -1,0 +1,132 @@
+<div class="pt-5">
+  <div class="flex w-[1100px] m-auto shadow-2xl">
+    <section class="w-1/2 border-r-2 border-[#ccccccd6] FirstSection">
+      <div class="m-auto w-[70%] my-5">
+        <div class="highlight-container">
+          <p class="highlighted-text">JOIN US TODAY</p>
+        </div>
+
+        <div class="my-5 mt-16 image-container relative">
+          <img src="../../../assets/Images/null.jpg" id="photoPreview" class="cursor-pointer w-[70%] h-[270px] rounded-full m-auto object-cover" (click)="triggerFileInput()">
+          <div class="overlay" (click)="triggerFileInput()">
+            <p class="text-white text-center">Upload your image</p>
+          </div>
+        </div>
+        <input type="file" id="fileInput" class="hidden" (change)="onFileSelected($event)">
+
+        <div>
+          <p class="text-white text-center">Welcome to our website where you can find rare breeds and will be easy for you to find clinics.</p>
+        </div>
+
+        <div class="flex justify-center">
+          <img src="../../../assets/Images/headerLogo.png" class="w-[40%] mr-5 rounded-full">
+        </div>
+      </div>
+    </section>
+
+    <section class="w-1/2">
+      <div class="m-auto w-[70%] my-5">
+        <div class="highlight-container2">
+          <p class="highlighted-text2 text-2xl">SignUp To <span class=" text-[#FE7A36]">PetBook</span></p>
+        </div>
+
+        <div class="my-10 flex flex-wrap justify-between">
+          <div class="mb-5 relative">
+            <div class="flex flex-col">
+              <label class="text-slate-800 text-lg">Name</label>
+              <input class="p-2 border-2 focus:outline-none focus:border-[#FE7A36] rounded-md" type="text"
+                     [(ngModel)]="user.name"
+                     (ngModelChange)="onInputValueChange({ field: 'name', value: $event })"
+                     placeholder="Tom Hiddleston">
+            </div>
+            <div *ngIf="validationErrors['name']" class="text-red-500 absolute">*Name is required.</div>
+          </div>
+
+          <div class="mb-5 relative">
+            <div class="flex flex-col">
+              <label class="text-slate-800 text-lg">UserName</label>
+              <input class="p-2 border-2 focus:outline-none focus:border-[#FE7A36] rounded-md" type="text"
+                     [(ngModel)]="user.userName"
+                     (ngModelChange)="onInputValueChange({ field: 'userName', value: $event })"
+                     placeholder="Tom">
+            </div>
+            <div *ngIf="validationErrors['userName']" class="text-red-500 absolute">*Username is required.</div>
+          </div>
+        
+          <div class="w-[100%] mb-5 relative">
+            <div class="flex flex-col">
+              <label class="text-slate-800 text-lg">Email</label>
+              <input class="p-2 border-2 focus:outline-none focus:border-[#FE7A36] rounded-md" type="text"
+                     [(ngModel)]="user.email"
+                     (ngModelChange)="onInputValueChange({ field: 'email', value: $event })"
+                     placeholder="Tom@gmail.com">
+            </div>
+            <div *ngIf="validationErrors['email']" class="text-red-500 absolute">*Email is required.</div>
+          </div>
+        
+          <div class="mb-5 relative">
+            <div class="flex flex-col">
+              <label class="text-slate-800 text-lg">Password</label>
+              <input class="p-2 border-2 focus:outline-none focus:border-[#FE7A36] rounded-md" type="password"
+                     [(ngModel)]="user.password"
+                     (ngModelChange)="onInputValueChange({ field: 'password', value: $event })">
+            </div>
+            <div *ngIf="validationErrors['password']" class="text-red-500 absolute">*Password is required.</div>
+          </div>
+        
+          <div class="mb-5 relative">
+            <div class="flex flex-col">
+              <label class="text-slate-800 text-lg">Phone</label>
+              <input class="p-2 border-2 focus:outline-none focus:border-[#FE7A36] rounded-md" type="text"
+                     [(ngModel)]="user.phone"
+                     (ngModelChange)="onInputValueChange({ field: 'phone', value: $event })"
+                     placeholder="012345678910">
+            </div>
+            <div *ngIf="validationErrors['phone']" class="text-red-500 absolute">*Phone number is required.</div>
+          </div>
+          
+          <div class="w-[100%] my-5 relative">
+            <div class="flex justify-between items-center">
+              <label class="text-slate-800 text-lg w-[30%]">Gender</label>
+              <div class="flex items-center p-2 border-2 hover:border-[#FE7A36] rounded-md w-[40%]">
+                <input type="radio" id="female" name="gender" value="F" [(ngModel)]="user.sex" (change)="onSexChange($event)" class="mr-2">
+                <label for="female" class="text-slate-800 text-base">Female</label>
+              </div>
+              <div class="flex items-center ml-7 p-2 border-2 hover:border-[#FE7A36] rounded-md w-[40%]">
+                <input type="radio" id="male" name="gender" value="M" [(ngModel)]="user.sex" (change)="onSexChange($event)" class="mr-2">
+                <label for="male" class="text-slate-800 text-base">Male</label>
+              </div>
+            </div>
+            <div *ngIf="validationErrors['sex']" class="text-red-500 absolute">*Gender is required.</div>
+          </div>
+        
+          <div class="mb-5 relative">
+            <div class="flex flex-col">
+              <label class="text-slate-800 text-lg">Location</label>
+              <input class="p-2 border-2 focus:outline-none focus:border-[#FE7A36] rounded-md" type="text"
+                     [(ngModel)]="user.location"
+                     (ngModelChange)="onInputValueChange({ field: 'location', value: $event })"
+                     placeholder="Sidi Bishr">
+            </div>
+            <div *ngIf="validationErrors['location']" class="text-red-500 absolute">*Location is required.</div>
+          </div>     
+                
+          <div class="mb-5">
+            <div class="flex flex-col">
+              <label class="text-slate-800 text-lg">Age</label>
+              <input class="p-2 border-2 focus:outline-none focus:border-[#FE7A36] rounded-md" type="number"
+                     [(ngModel)]="user.age"
+                     (ngModelChange)="onInputValueChange({ field: 'age', value: $event })">
+            </div>
+          </div>   
+        
+      </div>
+        
+        <section class="flex justify-between">
+            <button class="text-white bg-[#FE7A36] w-[40%] p-3 rounded-full hover:bg-[#e05e1d] transition duration-200 ease-in hover:-translate-x-1 hover:scale-105" (click)="SignUp()">Sign-Up</button>
+            <button class="text-white bg-[#979592] w-[40%] p-3 rounded-full hover:bg-[#605c5a] transition duration-200 ease-in hover:-translate-x-1 hover:scale-105" (click)="Cancel()">Cancel</button>
+        </section>
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+<div class="bg-gray-100 ">
+  <div class="px-8 table-container">
+    <ng-container >
+      <section class="m-auto py-10 text-center">
+        <p class="font-Laila font-semibold text-4xl text-[#051829]">Your Clinic Reservations</p>
+      </section>
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead>
+          <tr class="text-left text-xl text-gray-800 tracking-wider">
+            <th scope="col" class="px-4 py-7 font-medium">Pet</th>
+            <th scope="col" class="px-4 py-7 font-medium">Clinic</th>
+            <th scope="col" class="px-4 py-7 font-medium">Date</th>
+            <th scope="col" class="px-4 py-7 font-medium">Phone</th>
+            <th scope="col" class="px-4 py-7 font-medium">Delete</th>
+          </tr>
+        </thead>
+        <tbody class="bg-gray-100 text-lg">
+          <tr *ngFor="let item of reservationClinic">
+            <td class="px-6 py-4 whitespace-nowrap text-gray-800">{{ item.petName }}</td>
+            <td class="px-6 py-4 text-orange-500">{{ item.clinicName}}</td>
+            <td class="px-6 py-4 text-gray-800">{{ item.date | date}}</td>
+            <td class="px-6 py-4 text-gray-800 block" *ngFor="let phone of item.clinicPhones">{{phone.phoneNumber}}</td>
+
+            <td class="px-6 py-4 whitespace-nowrap">
+              <button class="text-red-600 hover:text-red-900 font-bold" (click)="DeleteClinicReservation(item.petID,item.clinicID)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr class="my-16 border-[#FE7A36]">
+    </ng-container>
+
+    <ng-template #noRequestMessage>
+      <div class="flex justify-center items-center min-h-screen">
+        <div class="bg-white shadow-md rounded-lg p-6">
+          <p class="text-center font-aclonica text-2xl text-gray-800">You does not have reservations</p>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-container >
+      <section class="m-auto pb-10 text-center">
+        <p class="font-Laila font-semibold text-4xl text-[#051829]">Your Vaccine Reservations</p>
+      </section>
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead>
+          <tr class="text-left text-xl text-gray-800 tracking-wider">
+            <th scope="col" class="px-4 py-7 font-medium">Pet</th>
+            <th scope="col" class="px-4 py-7 font-medium">Vaccine</th>
+            <th scope="col" class="px-4 py-7 font-medium">Date</th>
+            <th scope="col" class="px-4 py-7 font-medium">Clinic</th>
+            <th scope="col" class="px-4 py-7 font-medium">Phone</th>
+            <th scope="col" class="px-4 py-7 font-medium">Delete</th>
+          </tr>
+        </thead>
+        <tbody class="bg-gray-100 text-lg">
+          <tr *ngFor="let item of reservationVacc">
+            <td class="px-6 py-4 whitespace-nowrap text-gray-800">{{ item.petName }}</td>
+            <td class="px-6 py-4 text-orange-500">{{ item.vaccineName}}</td>
+            <td class="px-6 py-4 text-gray-800">{{ item.date | date}}</td>
+            <td class="px-6 py-4 text-orange-500">{{ item.clinicName}}</td>
+
+            <td class="px-6 py-4 text-gray-800 block" *ngFor="let phone of item.Phones">{{phone.phoneNumber}}</td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <button class="text-red-600 hover:text-red-900 font-bold" (click)="DeleteVaccReservation(item.petID,item.clinicID,item.vaccineID)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+
+    <ng-template #noRequestMessage>
+      <div class="flex justify-center items-center min-h-screen">
+        <div class="bg-white shadow-md rounded-lg p-6">
+          <p class="text-center font-aclonica text-2xl text-gray-800">You does not have reservations</p>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div *ngIf="phones.length > 0; else loading" class="p-6">
+  <div class="mt-8">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone Number</th>
+          <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        <tr *ngFor="let ph of phones">
+          <td class="px-6 py-4 whitespace-nowrap">
+            <div class="text-sm text-gray-900">{{ ph.phoneNumber }}</div>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-center">
+            <button class="update-button px-4 py-2 bg-[#FE7A36] text-white rounded-md hover:bg-[#fe7936b1]" (click)="delete(ph.phoneNumber)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="mt-4 flex justify-end">
+      <button class="add-button px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500" (click)="toggleAddLocation()">Add Phone</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showAddLocation" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
+  <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
+    <h2 class="text-2xl font-semibold mb-4">Add Phone</h2>
+    <form (ngSubmit)="saveLocation()">
+      <div class="mb-4">
+        <label for="newLocation" class="block text-sm font-semibold">Phone Number:</label>
+        <input id="newLocation" type="text" [(ngModel)]="newLocation" name="newLocation"
+               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" />
+      </div>
+      <div class="flex justify-end space-x-4">
+        <button type="button" (click)="cancelAddLocation()" class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">Cancel</button>
+        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="mt-4 flex justify-end">
+    <button class="add-button px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500" (click)="toggleAddLocation()">Add Phone</button>
+  </div>
+</ng-template>

@@ -1,0 +1,21 @@
+.highlight-container2 {
+    position: relative;
+    display: inline-block;
+}
+
+.highlighted-text2 {
+    letter-spacing: 3px;
+    color: rgb(88, 88, 88);
+    padding: 5px 10px;
+    position: relative;
+}
+
+.highlighted-text2::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    width: 100px; 
+    border-top: 3px solid #ccc;
+    border-radius: 15px;
+    transform: translateY(-50%);
+}

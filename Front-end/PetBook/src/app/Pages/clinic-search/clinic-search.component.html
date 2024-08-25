@@ -1,0 +1,64 @@
+<div class=" bg-[#f7f7f7] p-8 min-h-screen" (click)="hideSuggestions()">
+    <div >
+            <div class="flex w-[50%] m-auto" >
+                @if (Flag==true) {
+                    <button class="bg-[#454757] rounded-full p-3" (click)="BackToClinics()">
+                        <svg class="h-8 w-8 text-white"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M9 11l-4 4l4 4m-4 -4h11a4 4 0 0 0 0 -8h-1" /></svg>
+                    </button>
+                }
+                <div class="relative m-auto w-[500px]">
+                    <input type="text" placeholder="Search for Clinic" class="w-full text-lg pl-4 pr-10 py-3 border rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#FE7A36]" [(ngModel)]="clinicSearch" (ngModelChange)="onInputChange()"/>
+                    <button class="absolute  right-4 top-3 text-[#FE7A36]" (click)="searchClinics()">
+                    <svg
+                        class="w-8 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l5-5m0 0l-5-5m5 5H4"></path>
+                    </svg>
+                </button>
+                <ul class="absolute  z-10 top-full left-0 right-0 bg-white border border-gray-300 rounded-b-md shadow-md" *ngIf="clinicSuggestions.length > 0">
+                  <li *ngFor="let suggestion of clinicSuggestions" class="py-2 px-4 cursor-pointer hover:bg-gray-100" (click)="selectClinic(suggestion)">
+                    {{ suggestion }}
+                  </li>
+                </ul>           
+             </div>
+            </div>
+    </div>
+    <section class="Section mt-14">
+        <div class="flex justify-center items-center min-h-screen" *ngIf="countIsZero">
+            <div class="bg-white shadow-md rounded-lg p-6">
+              <p class="text-center font-aclonica text-2xl text-gray-800">There is no Clinic With this Name</p>
+            </div>
+        </div>   
+            <div class="flex flex-wrap m-auto justify-center w-[80%]">
+            @for(item of Clinics ; track $index){
+                <div class="cards bg-white border-2 w-[31%] relative shadow-lg rounded-lg mx-3 my-16 mt-0">
+                    <button class="absolute p-1 right-4 top-5 hover:bg-slate-200 rounded-full" (click)="getClinicPhones(item.clinicID)">
+                        <svg class="h-7 w-7 mr-[3px] text-[#FE7A36]"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />  <line x1="15" y1="7" x2="15" y2="7.01" />  <line x1="18" y1="7" x2="18" y2="7.01" />  <line x1="21" y1="7" x2="21" y2="7.01" /></svg>
+                    </button>
+                    <div class="w-full space-y-3 ">
+                        <div class="p-5 pb-0">
+                            <p class="font-Laila font-semibold text-lg">{{item.name}}</p>
+                            <p class="font-extralight text-gray-500 text-[17px]">{{item.location}}</p>
+                            <div class="flex justify-center ">
+                                <div *ngFor="let star of getStars(item.rate)">
+                                    <svg class="w-6 h-6 text-yellow-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                                        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-center ">
+                            <button class="w-full pb-5 pt-3 justify-center text-[20px] font-Laila2 flex items-center border-t-2 hover:bg-slate-200 hover:text-[#FE7A36] hover:font-semibold" [routerLink]="['/Clinic', item.clinicID]">
+                                Book
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+    <div class="text-slate-600 flex justify-center">
+        <button class="bg-[#FE7A36] text-white w-20 rounded-xl" (click)="prevPage()" > Previous</button>
+        <span class="p-2 m-2"> Page {{pageNumber}} of {{totalitems}}  </span>
+        <button class="bg-[#FE7A36] text-white w-20 rounded-xl" (click)="nextPage()" >Next</button>
+    </div>
+</div> 

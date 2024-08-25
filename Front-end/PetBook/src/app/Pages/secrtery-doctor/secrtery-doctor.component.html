@@ -1,0 +1,40 @@
+<div *ngIf="doctor && doctor.length > 0; else loading" class="p-6 bg-white shadow-md rounded-lg">
+  <div class="mt-8 overflow-x-auto">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Doctor Name</th>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Degree</th>
+          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Hiring Date</th>
+          <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        <tr *ngFor="let doctor1 of doctor" class="hover:bg-gray-100">
+          <td class="px-6 py-4 whitespace-nowrap">
+            <div class="text-sm font-semibold text-gray-900">{{ doctor1.name }}</div>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <div class="text-sm text-gray-900">{{ doctor1.degree }}</div>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <div class="text-sm text-gray-900">{{ doctor1.hiringDate | date: 'shortDate' }}</div>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-right">
+            <button class="px-4 py-2 bg-[#FE7A36] text-white rounded-md hover:bg-[#fe7936b1] mr-2" (click)="openEditDialog(doctor1)">Edit</button>
+            <button class="px-4 py-2 bg-[#FE7A36] text-white rounded-md hover:bg-[#fe7936b1]" (click)="deleteDoctor(doctor1.doctorID)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="mt-4 flex justify-end">
+      <button class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-700" (click)="openAddDialog()">Add Doctor</button>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="mt-4 flex justify-end">
+    <button class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700" (click)="openAddDialog()">Add Doctor</button>
+  </div>
+</ng-template>
